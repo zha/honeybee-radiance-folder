@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>honeybee_radiance_folder.folder module &#8212; honeybee radiance folder 1.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="honeybee_radiance_folder.folderutil module" href="honeybee_radiance_folder.folderutil.html" />
+    <link rel="prev" title="honeybee_radiance_folder package" href="honeybee_radiance_folder.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          honeybee radiance folder</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="honeybee_radiance_folder.html">honeybee_radiance_folder package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="honeybee_radiance_folder.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">honeybee_radiance_folder.folder module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="honeybee_radiance_folder.folderutil.html">honeybee_radiance_folder.folderutil module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="honeybee_radiance_folder.html#module-honeybee_radiance_folder">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="honeybee_radiance_folder.html">honeybee_radiance_folder package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="honeybee_radiance_folder.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">honeybee_radiance_folder.folder module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="honeybee_radiance_folder.folderutil.html">honeybee_radiance_folder.folderutil module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="honeybee_radiance_folder.html#module-honeybee_radiance_folder">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="honeybee_radiance_folder.html" title="Previous Chapter: honeybee_radiance_folder package"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; honeybee_radi...</span>
+    </a>
+  </li>
+  <li>
+    <a href="honeybee_radiance_folder.folderutil.html" title="Next Chapter: honeybee_radiance_folder.folderutil module"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">honeybee_radi... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/honeybee_radiance_folder.folder.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="honeybee_radiance_folder.html">honeybee_radiance_folder package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="honeybee_radiance_folder.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">honeybee_radiance_folder.folder module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="honeybee_radiance_folder.folderutil.html">honeybee_radiance_folder.folderutil module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="honeybee_radiance_folder.html#module-honeybee_radiance_folder">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="module-honeybee_radiance_folder.folder">
+<span id="honeybee-radiance-folder-folder-module"></span><h1>honeybee_radiance_folder.folder module<a class="headerlink" href="#module-honeybee_radiance_folder.folder" title="Permalink to this headline">¶</a></h1>
+<p>Radiance folder structure module.</p>
+<p>This module includes classes for writing and reading to / from a Radiance folder
+structure.</p>
+<p>See <a class="reference external" href="https://github.com/ladybug-tools/radiance-folder-structure#radiance-folder-structure">https://github.com/ladybug-tools/radiance-folder-structure#radiance-folder-structure</a></p>
+<dl class="class">
+<dt id="honeybee_radiance_folder.folder.AssetFolder">
+<em class="property">class </em><code class="descclassname">honeybee_radiance_folder.folder.</code><code class="descname">AssetFolder</code><span class="sig-paren">(</span><em>folder</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#AssetFolder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">honeybee_radiance_folder.folder._FolderCollection</span></code></p>
+<p>Input asset folder.</p>
+<p>This folder includes input assets for daylight model. They can be divided into
+senders and receivers.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>├───asset                     <span class="o">[</span>required<span class="o">]</span>
+    ├───grid
+    ├───ies
+    ├───sky
+    ├───sun
+    └───view
+</pre></div>
+</div>
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.grid_files">
+<code class="descname">grid_files</code><span class="sig-paren">(</span><em>rel_path=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#AssetFolder.grid_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.grid_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of sensor grid files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rel_path</strong> – A boolean to indicate if folders should be returned as relative
+paths in relation to root folder.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.ies_files">
+<code class="descname">ies_files</code><span class="sig-paren">(</span><em>rel_path=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#AssetFolder.ies_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.ies_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of ies files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rel_path</strong> – A boolean to indicate if folders should be returned as relative
+paths in relation to root folder.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.sky_files">
+<code class="descname">sky_files</code><span class="sig-paren">(</span><em>rel_path=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#AssetFolder.sky_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.sky_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of sky files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rel_path</strong> – A boolean to indicate if folders should be returned as relative
+paths in relation to root folder.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.sun_files">
+<code class="descname">sun_files</code><span class="sig-paren">(</span><em>rel_path=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#AssetFolder.sun_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.sun_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of sun files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rel_path</strong> – A boolean to indicate if folders should be returned as relative
+paths in relation to root folder.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.view_files">
+<code class="descname">view_files</code><span class="sig-paren">(</span><em>rel_path=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#AssetFolder.view_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.view_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of view files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rel_path</strong> – A boolean to indicate if folders should be returned as relative
+paths in relation to root folder.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>overwrite=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#AssetFolder.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write model folder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>overwrite</strong> (<em>bool</em>) – Set to True to overwrite the folder is it already exist.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.ASSET">
+<code class="descname">ASSET</code><em class="property"> = ('asset', 'asset/grid', 'asset/ies', 'asset/sky', 'asset/sun', 'asset/view')</em><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.ASSET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.ASSET_ROOT">
+<code class="descname">ASSET_ROOT</code><em class="property"> = 'asset'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.ASSET_ROOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.GRID">
+<code class="descname">GRID</code><em class="property"> = 'asset/grid'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.GRID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.IES">
+<code class="descname">IES</code><em class="property"> = 'asset/ies'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.IES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.REQUIRED">
+<code class="descname">REQUIRED</code><em class="property"> = ('asset',)</em><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.REQUIRED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.SKY">
+<code class="descname">SKY</code><em class="property"> = 'asset/sky'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.SKY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.SUN">
+<code class="descname">SUN</code><em class="property"> = 'asset/sun'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.SUN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.VIEW">
+<code class="descname">VIEW</code><em class="property"> = 'asset/view'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.VIEW" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.grid_folder">
+<code class="descname">grid_folder</code><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.grid_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sensor grids folder.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.ies_folder">
+<code class="descname">ies_folder</code><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.ies_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Electric light ies files folder.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.root">
+<code class="descname">root</code><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Asset root folder.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.sky_folder">
+<code class="descname">sky_folder</code><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.sky_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sky files folder.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.sun_folder">
+<code class="descname">sun_folder</code><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.sun_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sunpath and sun source folder.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.AssetFolder.view_folder">
+<code class="descname">view_folder</code><a class="headerlink" href="#honeybee_radiance_folder.folder.AssetFolder.view_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>View files folder.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="honeybee_radiance_folder.folder.Folder">
+<em class="property">class </em><code class="descclassname">honeybee_radiance_folder.folder.</code><code class="descname">Folder</code><span class="sig-paren">(</span><em>folder</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#Folder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.Folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Radiance folder structure.</p>
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.Folder.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>overwrite=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#Folder.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.Folder.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write folder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>overwrite</strong> (<em>bool</em>) – Set to True to overwrite the folder is it already exist.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.Folder.asset">
+<code class="descname">asset</code><a class="headerlink" href="#honeybee_radiance_folder.folder.Folder.asset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Asset folder structure.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.Folder.model">
+<code class="descname">model</code><a class="headerlink" href="#honeybee_radiance_folder.folder.Folder.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Model folder structure.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.Folder.output">
+<code class="descname">output</code><a class="headerlink" href="#honeybee_radiance_folder.folder.Folder.output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output folder structure.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.Folder.subfolders">
+<code class="descname">subfolders</code><a class="headerlink" href="#honeybee_radiance_folder.folder.Folder.subfolders" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of existing subfolders.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.Folder.system">
+<code class="descname">system</code><a class="headerlink" href="#honeybee_radiance_folder.folder.Folder.system" title="Permalink to this definition">¶</a></dt>
+<dd><p>System folder structure.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.Folder.version">
+<code class="descname">version</code><a class="headerlink" href="#honeybee_radiance_folder.folder.Folder.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Version for supported folder structure.</p>
+<p>This library might be behind the latest release of radiance folder structure at:
+<a class="reference external" href="https://github.com/ladybug-tools/radiance-folder-structure/tags">https://github.com/ladybug-tools/radiance-folder-structure/tags</a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="honeybee_radiance_folder.folder.ModelFolder">
+<em class="property">class </em><code class="descclassname">honeybee_radiance_folder.folder.</code><code class="descname">ModelFolder</code><span class="sig-paren">(</span><em>folder</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#ModelFolder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">honeybee_radiance_folder.folder._FolderCollection</span></code></p>
+<p>Model folder.</p>
+<p>Model folder includes all geometry and geometry metadata.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>folder</strong> (<em>str</em>) – Project folder as string. The folder will be created on write
+if it doesn’t exist already.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>├───model                     <span class="o">[</span>required<span class="o">]</span>
+    ├───bsdf
+    ├───dynamic
+    │   ├───aperture
+    │   │   └───interior
+    │   ├───nonopaque
+    │   │   ├───indoor
+    │   │   └───outdoor
+    │   └───opaque
+    │       ├───indoor
+    │       └───outdoor
+    └───static                <span class="o">[</span>required<span class="o">]</span>
+        ├───aperture
+        │   └───interior
+        ├───nonopaque         <span class="o">[</span>required<span class="o">]</span>
+        │   ├───indoor
+        │   └───outdoor
+        └───opaque            <span class="o">[</span>required<span class="o">]</span>
+            ├───indoor
+            └───outdoor
+</pre></div>
+</div>
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.daylight_matrix_files">
+<code class="descname">daylight_matrix_files</code><span class="sig-paren">(</span><em>aperture</em>, <em>receiver=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#ModelFolder.daylight_matrix_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.daylight_matrix_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Files to be included in daylight matrix calculation for an aperture.</p>
+<p>Target can be Sky or another aperture.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.dynamic_aperture">
+<code class="descname">dynamic_aperture</code><span class="sig-paren">(</span><em>interior=False</em>, <em>reload_folder=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#ModelFolder.dynamic_aperture"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.dynamic_aperture" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of dynamic apertures.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>interior</strong> (<em>bool</em>) – Boolean switch to return interior dynamic apertures.</li>
+<li><strong>reload_folder</strong> (<em>bool</em>) – Dynamic geometries are loaded the first time this
+method is called. To reload the files set reload_folder to True.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of dynamic apertures.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.dynamic_nonaperture">
+<code class="descname">dynamic_nonaperture</code><span class="sig-paren">(</span><em>opaque=True</em>, <em>location=0</em>, <em>reload_folder=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#ModelFolder.dynamic_nonaperture"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.dynamic_nonaperture" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of dynamic non-aperture geometries.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>opaque</strong> (<em>bool</em>) – A boolean switch to indicate if opaque geometries or nonopaque
+geometries should be returned. Default is True which returns opaque
+geometries.</li>
+<li><strong>location</strong> (<em>int</em>) – An integer to indicate whether to return the geometries that
+are in the enclosure, on the indoors, or in the outdoor. Default is 0 to
+return enclosure geometries. 1 returns indoor and 2 returns
+outdoor geometries.</li>
+<li><strong>reload_folder</strong> (<em>bool</em>) – Dynamic geometries are loaded the first time this
+method is called. To reload the files set reload_folder to True.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.static_aperture_files">
+<code class="descname">static_aperture_files</code><span class="sig-paren">(</span><em>black_out=False</em>, <em>rel_path=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#ModelFolder.static_aperture_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.static_aperture_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list of files for static apertures.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>black_out</strong> (<em>str</em>) – Set black_out to True for “isolated” studies for dynamic
+apertures.</li>
+<li><strong>rel_path</strong> (<em>str</em>) – Set rel_path to False for getting full path to files. By
+default the path is relative to study folder root.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.static_nonaperture_files">
+<code class="descname">static_nonaperture_files</code><span class="sig-paren">(</span><em>black_out=False</em>, <em>rel_path=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#ModelFolder.static_nonaperture_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.static_nonaperture_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of static files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>black_out</strong> (<em>str</em>) – Set black_out to True for direct studies.</li>
+<li><strong>rel_path</strong> (<em>str</em>) – Set rel_path to False for getting full path to files. By
+default the path is relative to study folder root.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.validate">
+<code class="descname">validate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#ModelFolder.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate folder.</p>
+<p>Ensure required subfolders exist.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.view_matrix_files">
+<code class="descname">view_matrix_files</code><span class="sig-paren">(</span><em>aperture</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#ModelFolder.view_matrix_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.view_matrix_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Files to be included in view matrix calculation for an aperture.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>overwrite=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#ModelFolder.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write model folder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>overwrite</strong> (<em>bool</em>) – Set to True to overwrite the folder is it already exist.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.BSDF">
+<code class="descname">BSDF</code><em class="property"> = ('model/bsdf',)</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.BSDF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_APERTURE">
+<code class="descname">DYNAMIC_APERTURE</code><em class="property"> = ('model/dynamic/aperture', 'model/dynamic/aperture/interior')</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_APERTURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_APERTURE_EXTERIOR">
+<code class="descname">DYNAMIC_APERTURE_EXTERIOR</code><em class="property"> = 'model/dynamic/aperture'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_APERTURE_EXTERIOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_APERTURE_INTERIOR">
+<code class="descname">DYNAMIC_APERTURE_INTERIOR</code><em class="property"> = 'model/dynamic/aperture/interior'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_APERTURE_INTERIOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_APERTURE_ROOT">
+<code class="descname">DYNAMIC_APERTURE_ROOT</code><em class="property"> = 'model/dynamic/aperture'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_APERTURE_ROOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_NONOPAQUE">
+<code class="descname">DYNAMIC_NONOPAQUE</code><em class="property"> = ('model/dynamic/nonopaque', 'model/dynamic/nonopaque/outdoor', 'model/dynamic/nonopaque/indoor')</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_NONOPAQUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_NONOPAQUE_INDOOR">
+<code class="descname">DYNAMIC_NONOPAQUE_INDOOR</code><em class="property"> = 'model/dynamic/nonopaque/indoor'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_NONOPAQUE_INDOOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_NONOPAQUE_OUTDOOR">
+<code class="descname">DYNAMIC_NONOPAQUE_OUTDOOR</code><em class="property"> = 'model/dynamic/nonopaque/outdoor'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_NONOPAQUE_OUTDOOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_NONOPAQUE_ROOT">
+<code class="descname">DYNAMIC_NONOPAQUE_ROOT</code><em class="property"> = 'model/dynamic/nonopaque'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_NONOPAQUE_ROOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_OPAQUE">
+<code class="descname">DYNAMIC_OPAQUE</code><em class="property"> = ('model/dynamic/opaque', 'model/dynamic/opaque/outdoor', 'model/dynamic/opaque/indoor')</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_OPAQUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_OPAQUE_INDOOR">
+<code class="descname">DYNAMIC_OPAQUE_INDOOR</code><em class="property"> = 'model/dynamic/opaque/indoor'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_OPAQUE_INDOOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_OPAQUE_OUTDOOR">
+<code class="descname">DYNAMIC_OPAQUE_OUTDOOR</code><em class="property"> = 'model/dynamic/opaque/outdoor'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_OPAQUE_OUTDOOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_OPAQUE_ROOT">
+<code class="descname">DYNAMIC_OPAQUE_ROOT</code><em class="property"> = 'model/dynamic/opaque'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_OPAQUE_ROOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_ROOT">
+<code class="descname">DYNAMIC_ROOT</code><em class="property"> = 'model/dynamic'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.DYNAMIC_ROOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.MODEL">
+<code class="descname">MODEL</code><em class="property"> = ('model', 'model/bsdf', 'model/dynamic', 'model/dynamic/aperture', 'model/dynamic/aperture/interior', 'model/dynamic/opaque', 'model/dynamic/opaque/outdoor', 'model/dynamic/opaque/indoor', 'model/dynamic/nonopaque', 'model/dynamic/nonopaque/outdoor', 'model/dynamic/nonopaque/indoor', 'model/static', 'model/static/aperture', 'model/static/aperture/interior', 'model/static/opaque', 'model/static/opaque/outdoor', 'model/static/opaque/indoor', 'model/static/nonopaque', 'model/static/nonopaque/outdoor', 'model/static/nonopaque/indoor')</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.MODEL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.MODEL_DYNAMIC">
+<code class="descname">MODEL_DYNAMIC</code><em class="property"> = ('model/dynamic', 'model/dynamic/aperture', 'model/dynamic/aperture/interior', 'model/dynamic/opaque', 'model/dynamic/opaque/outdoor', 'model/dynamic/opaque/indoor', 'model/dynamic/nonopaque', 'model/dynamic/nonopaque/outdoor', 'model/dynamic/nonopaque/indoor')</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.MODEL_DYNAMIC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.MODEL_ROOT">
+<code class="descname">MODEL_ROOT</code><em class="property"> = 'model'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.MODEL_ROOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.MODEL_STATIC">
+<code class="descname">MODEL_STATIC</code><em class="property"> = ('model/static', 'model/static/aperture', 'model/static/aperture/interior', 'model/static/opaque', 'model/static/opaque/outdoor', 'model/static/opaque/indoor', 'model/static/nonopaque', 'model/static/nonopaque/outdoor', 'model/static/nonopaque/indoor')</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.MODEL_STATIC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.REQUIRED">
+<code class="descname">REQUIRED</code><em class="property"> = ('model/static', 'model/static/opaque', 'model/static/nonopaque')</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.REQUIRED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.STATIC_APERTURE">
+<code class="descname">STATIC_APERTURE</code><em class="property"> = ('model/static/aperture', 'model/static/aperture/interior')</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.STATIC_APERTURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.STATIC_APERTURE_EXTERIOR">
+<code class="descname">STATIC_APERTURE_EXTERIOR</code><em class="property"> = 'model/static/aperture'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.STATIC_APERTURE_EXTERIOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.STATIC_APERTURE_INTERIOR">
+<code class="descname">STATIC_APERTURE_INTERIOR</code><em class="property"> = 'model/static/aperture/interior'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.STATIC_APERTURE_INTERIOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.STATIC_APERTURE_ROOT">
+<code class="descname">STATIC_APERTURE_ROOT</code><em class="property"> = 'model/static/aperture'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.STATIC_APERTURE_ROOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.STATIC_NONOPAQUE">
+<code class="descname">STATIC_NONOPAQUE</code><em class="property"> = ('model/static/nonopaque', 'model/static/nonopaque/outdoor', 'model/static/nonopaque/indoor')</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.STATIC_NONOPAQUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.STATIC_NONOPAQUE_INDOOR">
+<code class="descname">STATIC_NONOPAQUE_INDOOR</code><em class="property"> = 'model/static/nonopaque/indoor'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.STATIC_NONOPAQUE_INDOOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.STATIC_NONOPAQUE_OUTDOOR">
+<code class="descname">STATIC_NONOPAQUE_OUTDOOR</code><em class="property"> = 'model/static/nonopaque/outdoor'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.STATIC_NONOPAQUE_OUTDOOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.STATIC_NONOPAQUE_ROOT">
+<code class="descname">STATIC_NONOPAQUE_ROOT</code><em class="property"> = 'model/static/nonopaque'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.STATIC_NONOPAQUE_ROOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.STATIC_OPAQUE">
+<code class="descname">STATIC_OPAQUE</code><em class="property"> = ('model/static/opaque', 'model/static/opaque/outdoor', 'model/static/opaque/indoor')</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.STATIC_OPAQUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.STATIC_OPAQUE_INDOOR">
+<code class="descname">STATIC_OPAQUE_INDOOR</code><em class="property"> = 'model/static/opaque/indoor'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.STATIC_OPAQUE_INDOOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.STATIC_OPAQUE_OUTDOOR">
+<code class="descname">STATIC_OPAQUE_OUTDOOR</code><em class="property"> = 'model/static/opaque/outdoor'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.STATIC_OPAQUE_OUTDOOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.STATIC_OPAQUE_ROOT">
+<code class="descname">STATIC_OPAQUE_ROOT</code><em class="property"> = 'model/static/opaque'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.STATIC_OPAQUE_ROOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.STATIC_ROOT">
+<code class="descname">STATIC_ROOT</code><em class="property"> = 'model/static'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.STATIC_ROOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.has_dynamic_aperture">
+<code class="descname">has_dynamic_aperture</code><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.has_dynamic_aperture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if model has dynamic aperture.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.has_dynamic_nonaperture">
+<code class="descname">has_dynamic_nonaperture</code><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.has_dynamic_nonaperture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if model has dynamic nonaperture geometries.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.ModelFolder.root">
+<code class="descname">root</code><a class="headerlink" href="#honeybee_radiance_folder.folder.ModelFolder.root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Model root folder.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="honeybee_radiance_folder.folder.OutputFolder">
+<em class="property">class </em><code class="descclassname">honeybee_radiance_folder.folder.</code><code class="descname">OutputFolder</code><span class="sig-paren">(</span><em>folder</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#OutputFolder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.OutputFolder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">honeybee_radiance_folder.folder._FolderCollection</span></code></p>
+<p>Radiance output folder.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>├───output                    <span class="o">[</span>required<span class="o">]</span>
+    ├───matrix
+    ├───octree
+    ├───postprocess
+    └───temp
+</pre></div>
+</div>
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.OutputFolder.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>overwrite=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#OutputFolder.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.OutputFolder.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write model folder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>overwrite</strong> (<em>bool</em>) – Set to True to overwrite the folder is it already exist.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.OutputFolder.MATRIX">
+<code class="descname">MATRIX</code><em class="property"> = 'output/matrix'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.OutputFolder.MATRIX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.OutputFolder.OCTREE">
+<code class="descname">OCTREE</code><em class="property"> = 'output/octree'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.OutputFolder.OCTREE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.OutputFolder.OUTPUT">
+<code class="descname">OUTPUT</code><em class="property"> = ('output', 'output/octree', 'output/matrix', 'output/temp', 'output/postprocess')</em><a class="headerlink" href="#honeybee_radiance_folder.folder.OutputFolder.OUTPUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.OutputFolder.OUTPUT_ROOT">
+<code class="descname">OUTPUT_ROOT</code><em class="property"> = 'output'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.OutputFolder.OUTPUT_ROOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.OutputFolder.POSTPROCESS">
+<code class="descname">POSTPROCESS</code><em class="property"> = 'output/postprocess'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.OutputFolder.POSTPROCESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.OutputFolder.REQUIRED">
+<code class="descname">REQUIRED</code><em class="property"> = ('output',)</em><a class="headerlink" href="#honeybee_radiance_folder.folder.OutputFolder.REQUIRED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.OutputFolder.TEMP">
+<code class="descname">TEMP</code><em class="property"> = 'output/temp'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.OutputFolder.TEMP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.OutputFolder.matrix">
+<code class="descname">matrix</code><a class="headerlink" href="#honeybee_radiance_folder.folder.OutputFolder.matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Matrix outputs folder.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.OutputFolder.octree">
+<code class="descname">octree</code><a class="headerlink" href="#honeybee_radiance_folder.folder.OutputFolder.octree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Folder for octree files.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.OutputFolder.postprocess">
+<code class="descname">postprocess</code><a class="headerlink" href="#honeybee_radiance_folder.folder.OutputFolder.postprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Postprocess folder.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.OutputFolder.root">
+<code class="descname">root</code><a class="headerlink" href="#honeybee_radiance_folder.folder.OutputFolder.root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output root folder.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.OutputFolder.temp">
+<code class="descname">temp</code><a class="headerlink" href="#honeybee_radiance_folder.folder.OutputFolder.temp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Temporary files folder.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="honeybee_radiance_folder.folder.SystemFolder">
+<em class="property">class </em><code class="descclassname">honeybee_radiance_folder.folder.</code><code class="descname">SystemFolder</code><span class="sig-paren">(</span><em>folder</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#SystemFolder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.SystemFolder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">honeybee_radiance_folder.folder._FolderCollection</span></code></p>
+<p>System folder includes settings for runs like options, tasks.json.</p>
+<dl class="method">
+<dt id="honeybee_radiance_folder.folder.SystemFolder.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>overwrite=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folder.html#SystemFolder.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folder.SystemFolder.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write model folder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>overwrite</strong> (<em>bool</em>) – Set to True to overwrite the folder is it already exist.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.SystemFolder.REQUIRED">
+<code class="descname">REQUIRED</code><em class="property"> = ('system',)</em><a class="headerlink" href="#honeybee_radiance_folder.folder.SystemFolder.REQUIRED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.SystemFolder.SYSTEM">
+<code class="descname">SYSTEM</code><em class="property"> = ('system',)</em><a class="headerlink" href="#honeybee_radiance_folder.folder.SystemFolder.SYSTEM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.SystemFolder.SYSTEM_ROOT">
+<code class="descname">SYSTEM_ROOT</code><em class="property"> = 'system'</em><a class="headerlink" href="#honeybee_radiance_folder.folder.SystemFolder.SYSTEM_ROOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folder.SystemFolder.root">
+<code class="descname">root</code><a class="headerlink" href="#honeybee_radiance_folder.folder.SystemFolder.root" title="Permalink to this definition">¶</a></dt>
+<dd><p>System root folder.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2019, Ladybug Tools.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

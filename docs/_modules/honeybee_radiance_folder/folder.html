@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>honeybee_radiance_folder.folder &#8212; honeybee radiance folder 1.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          honeybee radiance folder</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../honeybee_radiance_folder.html">honeybee_radiance_folder package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../honeybee_radiance_folder.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../honeybee_radiance_folder.folder.html">honeybee_radiance_folder.folder module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../honeybee_radiance_folder.folderutil.html">honeybee_radiance_folder.folderutil module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../honeybee_radiance_folder.html#module-honeybee_radiance_folder">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../honeybee_radiance_folder.html">honeybee_radiance_folder package</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../honeybee_radiance_folder.html">honeybee_radiance_folder package</a></li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <h1>Source code for honeybee_radiance_folder.folder</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Radiance folder structure module.</span>
+
+<span class="sd">This module includes classes for writing and reading to / from a Radiance folder</span>
+<span class="sd">structure.</span>
+
+<span class="sd">See https://github.com/ladybug-tools/radiance-folder-structure#radiance-folder-structure</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">from</span> <span class="nn">.folderutil</span> <span class="k">import</span> <span class="n">parse_dynamic_apertures</span><span class="p">,</span> <span class="n">parse_dynamic_nonapertures</span>
+
+
+<span class="k">class</span> <span class="nc">_FolderCollection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Radiance folder base class structure.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        folder (str): Path to project folder.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        folder (str): Path to project folder as a string. The folder will be created</span>
+<span class="sd">            on write if it doesn&#39;t exist already.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">REQUIRED</span> <span class="o">=</span> <span class="p">()</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_folder&#39;</span><span class="p">,)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">folder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return project folder.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_folder</span>
+
+    <span class="c1"># TODO: extend validation</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Validate folder.</span>
+<span class="sd">        </span>
+<span class="sd">        Ensure required subfolders exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">folder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder</span>
+        <span class="c1"># ensure the folder exist</span>
+        <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">folder</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> folder does not exist!&#39;</span>
+        <span class="c1"># ensure all the required folders exist</span>
+        <span class="k">for</span> <span class="n">subfolder</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">REQUIRED</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">subfolder</span><span class="p">)),</span> \
+                <span class="s1">&#39;Required subfolder &quot;</span><span class="si">{}</span><span class="s1">&quot; is missing from &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subfolder</span><span class="p">,</span> <span class="n">folder</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_find_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subfolder</span><span class="p">,</span> <span class="n">ext</span><span class="p">,</span> <span class="n">rel_path</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Find files in a subfolder.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            subfolder (str): A subfolder.</span>
+<span class="sd">            ext (str): File extention.</span>
+<span class="sd">            rel_path (bool): Return relative path to root folder.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="n">subfolder</span><span class="p">)</span>
+        <span class="n">filtered_files</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">ext</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+        <span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">rel_path</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">fi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">)</span> <span class="k">for</span> <span class="n">fi</span> <span class="ow">in</span> <span class="n">filtered_files</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">filtered_files</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ModelFolder"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.ModelFolder">[docs]</a><span class="k">class</span> <span class="nc">ModelFolder</span><span class="p">(</span><span class="n">_FolderCollection</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Model folder.</span>
+
+<span class="sd">    Model folder includes all geometry and geometry metadata.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        folder (str): Project folder as string. The folder will be created on write</span>
+<span class="sd">            if it doesn&#39;t exist already.</span>
+
+<span class="sd">    .. code-block:: shell</span>
+
+<span class="sd">        ├───model                     [required]</span>
+<span class="sd">            ├───bsdf</span>
+<span class="sd">            ├───dynamic</span>
+<span class="sd">            │   ├───aperture</span>
+<span class="sd">            │   │   └───interior</span>
+<span class="sd">            │   ├───nonopaque</span>
+<span class="sd">            │   │   ├───indoor</span>
+<span class="sd">            │   │   └───outdoor</span>
+<span class="sd">            │   └───opaque</span>
+<span class="sd">            │       ├───indoor</span>
+<span class="sd">            │       └───outdoor</span>
+<span class="sd">            └───static                [required]</span>
+<span class="sd">                ├───aperture</span>
+<span class="sd">                │   └───interior</span>
+<span class="sd">                ├───nonopaque         [required]</span>
+<span class="sd">                │   ├───indoor</span>
+<span class="sd">                │   └───outdoor</span>
+<span class="sd">                └───opaque            [required]</span>
+<span class="sd">                    ├───indoor</span>
+<span class="sd">                    └───outdoor</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">MODEL_ROOT</span> <span class="o">=</span> <span class="s1">&#39;model&#39;</span>
+
+    <span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="s1">&#39;model/static&#39;</span>
+
+    <span class="n">STATIC_APERTURE_ROOT</span> <span class="o">=</span> <span class="s1">&#39;model/static/aperture&#39;</span>
+    <span class="n">STATIC_APERTURE_EXTERIOR</span> <span class="o">=</span> <span class="s1">&#39;model/static/aperture&#39;</span>
+    <span class="n">STATIC_APERTURE_INTERIOR</span> <span class="o">=</span> <span class="s1">&#39;model/static/aperture/interior&#39;</span>
+    <span class="n">STATIC_APERTURE</span> <span class="o">=</span> <span class="n">STATIC_APERTURE_EXTERIOR</span><span class="p">,</span> <span class="n">STATIC_APERTURE_INTERIOR</span>
+
+    <span class="n">STATIC_OPAQUE_ROOT</span> <span class="o">=</span> <span class="s1">&#39;model/static/opaque&#39;</span>
+    <span class="n">STATIC_OPAQUE_OUTDOOR</span> <span class="o">=</span> <span class="s1">&#39;model/static/opaque/outdoor&#39;</span>
+    <span class="n">STATIC_OPAQUE_INDOOR</span> <span class="o">=</span> <span class="s1">&#39;model/static/opaque/indoor&#39;</span>
+    <span class="n">STATIC_OPAQUE</span> <span class="o">=</span> <span class="n">STATIC_OPAQUE_ROOT</span><span class="p">,</span> <span class="n">STATIC_OPAQUE_OUTDOOR</span><span class="p">,</span> <span class="n">STATIC_OPAQUE_INDOOR</span>
+
+    <span class="n">STATIC_NONOPAQUE_ROOT</span> <span class="o">=</span> <span class="s1">&#39;model/static/nonopaque&#39;</span>
+    <span class="n">STATIC_NONOPAQUE_OUTDOOR</span> <span class="o">=</span> <span class="s1">&#39;model/static/nonopaque/outdoor&#39;</span>
+    <span class="n">STATIC_NONOPAQUE_INDOOR</span> <span class="o">=</span> <span class="s1">&#39;model/static/nonopaque/indoor&#39;</span>
+
+    <span class="n">STATIC_NONOPAQUE</span> <span class="o">=</span> <span class="n">STATIC_NONOPAQUE_ROOT</span><span class="p">,</span> <span class="n">STATIC_NONOPAQUE_OUTDOOR</span><span class="p">,</span> \
+        <span class="n">STATIC_NONOPAQUE_INDOOR</span>
+
+    <span class="n">MODEL_STATIC</span> <span class="o">=</span> <span class="p">(</span><span class="n">STATIC_ROOT</span><span class="p">,)</span> <span class="o">+</span> <span class="n">STATIC_APERTURE</span> <span class="o">+</span> <span class="n">STATIC_OPAQUE</span> <span class="o">+</span> <span class="n">STATIC_NONOPAQUE</span>
+
+    <span class="n">DYNAMIC_ROOT</span> <span class="o">=</span> <span class="s1">&#39;model/dynamic&#39;</span>
+
+    <span class="n">DYNAMIC_APERTURE_ROOT</span> <span class="o">=</span> <span class="s1">&#39;model/dynamic/aperture&#39;</span>
+    <span class="n">DYNAMIC_APERTURE_EXTERIOR</span> <span class="o">=</span> <span class="s1">&#39;model/dynamic/aperture&#39;</span>
+    <span class="n">DYNAMIC_APERTURE_INTERIOR</span> <span class="o">=</span> <span class="s1">&#39;model/dynamic/aperture/interior&#39;</span>
+    <span class="n">DYNAMIC_APERTURE</span> <span class="o">=</span> <span class="n">DYNAMIC_APERTURE_EXTERIOR</span><span class="p">,</span> <span class="n">DYNAMIC_APERTURE_INTERIOR</span>
+
+    <span class="n">DYNAMIC_OPAQUE_ROOT</span> <span class="o">=</span> <span class="s1">&#39;model/dynamic/opaque&#39;</span>
+    <span class="n">DYNAMIC_OPAQUE_OUTDOOR</span> <span class="o">=</span> <span class="s1">&#39;model/dynamic/opaque/outdoor&#39;</span>
+    <span class="n">DYNAMIC_OPAQUE_INDOOR</span> <span class="o">=</span> <span class="s1">&#39;model/dynamic/opaque/indoor&#39;</span>
+    <span class="n">DYNAMIC_OPAQUE</span> <span class="o">=</span> <span class="n">DYNAMIC_OPAQUE_ROOT</span><span class="p">,</span> <span class="n">DYNAMIC_OPAQUE_OUTDOOR</span><span class="p">,</span> <span class="n">DYNAMIC_OPAQUE_INDOOR</span>
+
+    <span class="n">DYNAMIC_NONOPAQUE_ROOT</span> <span class="o">=</span> <span class="s1">&#39;model/dynamic/nonopaque&#39;</span>
+    <span class="n">DYNAMIC_NONOPAQUE_OUTDOOR</span> <span class="o">=</span> <span class="s1">&#39;model/dynamic/nonopaque/outdoor&#39;</span>
+    <span class="n">DYNAMIC_NONOPAQUE_INDOOR</span> <span class="o">=</span> <span class="s1">&#39;model/dynamic/nonopaque/indoor&#39;</span>
+
+    <span class="n">DYNAMIC_NONOPAQUE</span> <span class="o">=</span> <span class="n">DYNAMIC_NONOPAQUE_ROOT</span><span class="p">,</span> <span class="n">DYNAMIC_NONOPAQUE_OUTDOOR</span><span class="p">,</span> \
+        <span class="n">DYNAMIC_NONOPAQUE_INDOOR</span>
+
+    <span class="n">MODEL_DYNAMIC</span> <span class="o">=</span> <span class="p">(</span><span class="n">DYNAMIC_ROOT</span><span class="p">,)</span> <span class="o">+</span> <span class="n">DYNAMIC_APERTURE</span> <span class="o">+</span> <span class="n">DYNAMIC_OPAQUE</span> <span class="o">+</span> \
+        <span class="n">DYNAMIC_NONOPAQUE</span>
+
+    <span class="n">BSDF</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;model/bsdf&#39;</span><span class="p">,)</span>
+
+    <span class="n">MODEL</span> <span class="o">=</span> <span class="p">(</span><span class="n">MODEL_ROOT</span><span class="p">,)</span> <span class="o">+</span> <span class="n">BSDF</span> <span class="o">+</span> <span class="n">MODEL_DYNAMIC</span> <span class="o">+</span> <span class="n">MODEL_STATIC</span>
+
+    <span class="n">REQUIRED</span> <span class="o">=</span> <span class="n">STATIC_ROOT</span><span class="p">,</span> <span class="n">STATIC_OPAQUE_ROOT</span><span class="p">,</span> <span class="n">STATIC_NONOPAQUE_ROOT</span>
+
+    <span class="vm">__slots__</span> <span class="o">=</span><span class="p">(</span>
+        <span class="s1">&#39;_dynamic_apertures&#39;</span><span class="p">,</span> <span class="s1">&#39;_dynamic_apertures_interior&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;_dynamic_opaque&#39;</span><span class="p">,</span> <span class="s1">&#39;_dynamic_opaque_indoor&#39;</span><span class="p">,</span> <span class="s1">&#39;_dynamic_opaque_outdoor&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;_dynamic_nonopaque&#39;</span><span class="p">,</span> <span class="s1">&#39;_dynamic_nonopaque_indoor&#39;</span><span class="p">,</span> <span class="s1">&#39;_dynamic_nonopaque_outdoor&#39;</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder</span><span class="p">):</span>
+        <span class="n">_FolderCollection</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_apertures</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_apertures_interior</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_opaque</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_opaque_indoor</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_opaque_outdoor</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_nonopaque</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_nonopaque_indoor</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_nonopaque_outdoor</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">root</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Model root folder.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">MODEL_ROOT</span>
+
+<div class="viewcode-block" id="ModelFolder.validate"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.ModelFolder.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># TODO: ensure minimum number of files exist</span>
+        <span class="c1"># TODO: for matrix based studies ensure model_info is available and as expected</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">has_dynamic_aperture</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns true if model has dynamic aperture.&quot;&quot;&quot;</span>
+        <span class="c1"># check if states file exist</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_apertures</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_load_dynamic_apertures</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">aperture</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_apertures</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_apertures_interior</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">aperture</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">has_dynamic_nonaperture</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return True if model has dynamic nonaperture geometries.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_opaque</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_load_dynamic_nonaperture</span><span class="p">()</span>
+        
+        <span class="k">for</span> <span class="n">geo</span> <span class="ow">in</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_opaque</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_opaque_indoor</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_opaque_outdoor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_nonopaque</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_nonopaque_indoor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_nonopaque_outdoor</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">geo</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="ModelFolder.view_matrix_files"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.ModelFolder.view_matrix_files">[docs]</a>    <span class="k">def</span> <span class="nf">view_matrix_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aperture</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Files to be included in view matrix calculation for an aperture.&quot;&quot;&quot;</span>
+        <span class="c1"># find the room and include the room shell geometry.</span>
+        <span class="c1"># include the blacked out version of the other apertures in the room.</span>
+        <span class="c1"># include indoor geometries with the room.</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ModelFolder.daylight_matrix_files"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.ModelFolder.daylight_matrix_files">[docs]</a>    <span class="k">def</span> <span class="nf">daylight_matrix_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aperture</span><span class="p">,</span> <span class="n">receiver</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Files to be included in daylight matrix calculation for an aperture.</span>
+<span class="sd">        </span>
+<span class="sd">        Target can be Sky or another aperture.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># find the room and include the room shell geometry.</span>
+        <span class="c1"># include the rest of the scene except for indoor geometries for that room.</span>
+        <span class="c1"># here is a place that light-path is necessary to be able to know what is indoor</span>
+        <span class="c1"># and what is outdoor.</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ModelFolder.static_aperture_files"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.ModelFolder.static_aperture_files">[docs]</a>    <span class="k">def</span> <span class="nf">static_aperture_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">black_out</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">rel_path</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return list of files for static apertures.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            black_out (str): Set black_out to True for &quot;isolated&quot; studies for dynamic</span>
+<span class="sd">                apertures.</span>
+<span class="sd">            rel_path (str): Set rel_path to False for getting full path to files. By</span>
+<span class="sd">                default the path is relative to study folder root.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">material_ext</span> <span class="o">=</span> <span class="s1">&#39;.mat&#39;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">black_out</span> <span class="k">else</span> <span class="s1">&#39;.blk&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">STATIC_APERTURE</span><span class="p">,</span> <span class="n">material_ext</span><span class="p">,</span> <span class="n">rel_path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ModelFolder.static_nonaperture_files"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.ModelFolder.static_nonaperture_files">[docs]</a>    <span class="k">def</span> <span class="nf">static_nonaperture_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">black_out</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">rel_path</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get list of static files.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            black_out (str): Set black_out to True for direct studies.</span>
+<span class="sd">            rel_path (str): Set rel_path to False for getting full path to files. By</span>
+<span class="sd">                default the path is relative to study folder root.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">material_ext</span> <span class="o">=</span> <span class="s1">&#39;.mat&#39;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">black_out</span> <span class="k">else</span> <span class="s1">&#39;.blk&#39;</span>
+        <span class="c1"># collect opaque geometries</span>
+        <span class="n">opaque_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">STATIC_OPAQUE</span><span class="p">,</span> <span class="n">material_ext</span><span class="p">)</span>
+        <span class="c1"># collect nonopaque geometries</span>
+        <span class="n">non_opaque_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">STATIC_NONOPAQUE</span><span class="p">,</span> <span class="s1">&#39;.mat&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">opaque_files</span> <span class="o">+</span> <span class="n">non_opaque_files</span></div>
+
+    <span class="k">def</span> <span class="nf">_load_dynamic_apertures</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Try to load interior and exterior dynamic apertures from folder.&quot;&quot;&quot;</span>
+        <span class="n">int_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DYNAMIC_APERTURE_INTERIOR</span><span class="p">)</span>
+        <span class="n">ext_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DYNAMIC_APERTURE_EXTERIOR</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_apertures_interior</span> <span class="o">=</span> \
+            <span class="n">parse_dynamic_apertures</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">int_folder</span><span class="p">,</span> <span class="s1">&#39;states.json&#39;</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_apertures</span> <span class="o">=</span> \
+            <span class="n">parse_dynamic_apertures</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ext_folder</span><span class="p">,</span> <span class="s1">&#39;states.json&#39;</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_load_dynamic_nonaperture</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Try to load indoor and outdoor dynamic nonapertures from folder.&quot;&quot;&quot;</span>
+        <span class="n">opq_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DYNAMIC_OPAQUE_ROOT</span><span class="p">)</span>
+        <span class="n">in_opq_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DYNAMIC_OPAQUE_INDOOR</span><span class="p">)</span>
+        <span class="n">out_opq_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DYNAMIC_OPAQUE_OUTDOOR</span><span class="p">)</span>
+        <span class="n">nonopq_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DYNAMIC_NONOPAQUE_ROOT</span><span class="p">)</span>
+        <span class="n">in_nonopq_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DYNAMIC_NONOPAQUE_INDOOR</span><span class="p">)</span>
+        <span class="n">out_nonopq_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DYNAMIC_NONOPAQUE_OUTDOOR</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_opaque</span> <span class="o">=</span> \
+            <span class="n">parse_dynamic_nonapertures</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">opq_folder</span><span class="p">,</span> <span class="s1">&#39;states.json&#39;</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_opaque_indoor</span> <span class="o">=</span> \
+            <span class="n">parse_dynamic_nonapertures</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">in_opq_folder</span><span class="p">,</span> <span class="s1">&#39;states.json&#39;</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_opaque_outdoor</span> <span class="o">=</span> \
+            <span class="n">parse_dynamic_nonapertures</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out_opq_folder</span><span class="p">,</span> <span class="s1">&#39;states.json&#39;</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_nonopaque</span> <span class="o">=</span> \
+            <span class="n">parse_dynamic_nonapertures</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nonopq_folder</span><span class="p">,</span> <span class="s1">&#39;states.json&#39;</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_nonopaque_indoor</span> <span class="o">=</span> \
+            <span class="n">parse_dynamic_nonapertures</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">in_nonopq_folder</span><span class="p">,</span> <span class="s1">&#39;states.json&#39;</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_nonopaque_outdoor</span> <span class="o">=</span> \
+            <span class="n">parse_dynamic_nonapertures</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out_nonopq_folder</span><span class="p">,</span> <span class="s1">&#39;states.json&#39;</span><span class="p">))</span>
+
+<div class="viewcode-block" id="ModelFolder.dynamic_aperture"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.ModelFolder.dynamic_aperture">[docs]</a>    <span class="k">def</span> <span class="nf">dynamic_aperture</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interior</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reload_folder</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List of dynamic apertures.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            interior (bool): Boolean switch to return interior dynamic apertures.</span>
+<span class="sd">            reload_folder (bool): Dynamic geometries are loaded the first time this</span>
+<span class="sd">                method is called. To reload the files set reload_folder to True.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            A list of dynamic apertures.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">reload_folder</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_apertures</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># load dynamic apertures</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_load_dynamic_apertures</span><span class="p">()</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_apertures_interior</span> <span class="k">if</span> <span class="n">interior</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_apertures</span></div>
+
+<div class="viewcode-block" id="ModelFolder.dynamic_nonaperture"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.ModelFolder.dynamic_nonaperture">[docs]</a>    <span class="k">def</span> <span class="nf">dynamic_nonaperture</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opaque</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">reload_folder</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List of dynamic non-aperture geometries.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            opaque (bool): A boolean switch to indicate if opaque geometries or nonopaque</span>
+<span class="sd">                geometries should be returned. Default is True which returns opaque</span>
+<span class="sd">                geometries.</span>
+<span class="sd">            location (int): An integer to indicate whether to return the geometries that</span>
+<span class="sd">                are in the enclosure, on the indoors, or in the outdoor. Default is 0 to</span>
+<span class="sd">                return enclosure geometries. 1 returns indoor and 2 returns</span>
+<span class="sd">                outdoor geometries.</span>
+<span class="sd">            reload_folder (bool): Dynamic geometries are loaded the first time this</span>
+<span class="sd">                method is called. To reload the files set reload_folder to True.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">reload_folder</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_opaque</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_load_dynamic_nonaperture</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">location</span> <span class="o">&lt;=</span><span class="mi">2</span><span class="p">,</span> \
+            <span class="s1">&#39;Location must be 0 for enclosure, 1 for indoor or 2 for outdoor.&#39;</span>
+        <span class="k">if</span> <span class="n">opaque</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_opaque</span> <span class="k">if</span> <span class="n">location</span> <span class="o">==</span> <span class="mi">0</span> \
+                <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_opaque_indoor</span> <span class="k">if</span> <span class="n">location</span> <span class="o">==</span> <span class="mi">1</span> \
+                <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_opaque_outdoor</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_nonopaque</span> <span class="k">if</span> <span class="n">location</span> <span class="o">==</span> <span class="mi">0</span> \
+                <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_nonopaque_indoor</span> <span class="k">if</span> <span class="n">location</span> <span class="o">==</span> <span class="mi">1</span> \
+                <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dynamic_nonopaque_outdoor</span></div>
+
+    <span class="k">def</span> <span class="nf">_filter_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder_collection</span><span class="p">,</span> <span class="n">material_ext</span><span class="o">=</span><span class="s1">&#39;.mat&#39;</span><span class="p">,</span> <span class="n">rel_path</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Filter files in a folder collection.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            folder_collection (list[str]): A list of subfolders.</span>
+<span class="sd">            material_ext (str): Expected extension for material files (default: .mat).</span>
+<span class="sd">            rel_path: A boolean to indicate if folders should be returned as relative</span>
+<span class="sd">                paths in relation to root folder.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">filtered_files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">sf</span> <span class="ow">in</span> <span class="n">folder_collection</span><span class="p">:</span>
+            <span class="n">subfolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="n">sf</span><span class="p">)</span>
+            <span class="n">files</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">subfolder</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">fi</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">fi</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.rad&#39;</span><span class="p">):</span>
+                    <span class="k">continue</span>
+                <span class="n">fn</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">fi</span><span class="p">)</span>
+                <span class="c1"># ensure a mat file with the same filename exist</span>
+                <span class="n">material_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subfolder</span><span class="p">,</span> <span class="n">fn</span> <span class="o">+</span> <span class="n">material_ext</span><span class="p">)</span>
+                <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">material_file</span><span class="p">),</span> \
+                    <span class="s1">&#39;Failed to find the material file: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">material_file</span><span class="p">)</span>
+                
+                <span class="n">filtered_files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subfolder</span><span class="p">,</span> <span class="n">fn</span> <span class="o">+</span> <span class="n">material_ext</span><span class="p">)),</span>
+                        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subfolder</span><span class="p">,</span> <span class="n">fn</span> <span class="o">+</span> <span class="s1">&#39;.rad&#39;</span><span class="p">))</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">rel_path</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">fi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">)</span> <span class="k">for</span> <span class="n">fi</span> <span class="ow">in</span> <span class="n">filtered_files</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">filtered_files</span>
+
+<div class="viewcode-block" id="ModelFolder.write"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.ModelFolder.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write model folder.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            overwrite (bool): Set to True to overwrite the folder is it already exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">root_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">overwrite</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">root_folder</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s1">&#39;Model folder already exist.&#39;</span>
+                <span class="s1">&#39;Set overwrite to True if you want the folder to be overwritten.&#39;</span>
+            <span class="p">)</span>
+        <span class="k">for</span> <span class="n">subfolder</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">MODEL</span><span class="p">:</span>
+            <span class="n">directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="n">subfolder</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">overwrite</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> already exist.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">directory</span><span class="p">))</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="AssetFolder"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.AssetFolder">[docs]</a><span class="k">class</span> <span class="nc">AssetFolder</span><span class="p">(</span><span class="n">_FolderCollection</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Input asset folder.</span>
+<span class="sd">    </span>
+<span class="sd">    This folder includes input assets for daylight model. They can be divided into</span>
+<span class="sd">    senders and receivers.</span>
+
+<span class="sd">    .. code-block:: shell</span>
+
+<span class="sd">        ├───asset                     [required]</span>
+<span class="sd">            ├───grid</span>
+<span class="sd">            ├───ies</span>
+<span class="sd">            ├───sky</span>
+<span class="sd">            ├───sun</span>
+<span class="sd">            └───view</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ASSET_ROOT</span> <span class="o">=</span> <span class="s1">&#39;asset&#39;</span>
+    <span class="n">GRID</span> <span class="o">=</span> <span class="s1">&#39;asset/grid&#39;</span>
+    <span class="n">IES</span> <span class="o">=</span> <span class="s1">&#39;asset/ies&#39;</span>
+    <span class="n">SKY</span> <span class="o">=</span> <span class="s1">&#39;asset/sky&#39;</span>
+    <span class="n">SUN</span> <span class="o">=</span> <span class="s1">&#39;asset/sun&#39;</span>
+    <span class="n">VIEW</span> <span class="o">=</span> <span class="s1">&#39;asset/view&#39;</span>
+
+    <span class="n">ASSET</span> <span class="o">=</span> <span class="n">ASSET_ROOT</span><span class="p">,</span> <span class="n">GRID</span><span class="p">,</span> <span class="n">IES</span> <span class="p">,</span> <span class="n">SKY</span><span class="p">,</span> <span class="n">SUN</span><span class="p">,</span> <span class="n">VIEW</span>
+    <span class="n">REQUIRED</span> <span class="o">=</span> <span class="p">(</span><span class="n">ASSET_ROOT</span><span class="p">,)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">root</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Asset root folder.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ASSET_ROOT</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ies_folder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Electric light ies files folder.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">IES</span>
+    
+<div class="viewcode-block" id="AssetFolder.ies_files"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.AssetFolder.ies_files">[docs]</a>    <span class="k">def</span> <span class="nf">ies_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rel_path</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List of ies files.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            rel_path: A boolean to indicate if folders should be returned as relative</span>
+<span class="sd">                paths in relation to root folder.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">IES</span><span class="p">,</span> <span class="s1">&#39;.ies&#39;</span><span class="p">,</span> <span class="n">rel_path</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sky_folder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sky files folder.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">SKY</span>
+
+<div class="viewcode-block" id="AssetFolder.sky_files"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.AssetFolder.sky_files">[docs]</a>    <span class="k">def</span> <span class="nf">sky_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rel_path</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List of sky files.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            rel_path: A boolean to indicate if folders should be returned as relative</span>
+<span class="sd">                paths in relation to root folder.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">IES</span><span class="p">,</span> <span class="s1">&#39;.sky&#39;</span><span class="p">,</span> <span class="n">rel_path</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sun_folder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sunpath and sun source folder.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">SUN</span>
+
+<div class="viewcode-block" id="AssetFolder.sun_files"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.AssetFolder.sun_files">[docs]</a>    <span class="k">def</span> <span class="nf">sun_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rel_path</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List of sun files.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            rel_path: A boolean to indicate if folders should be returned as relative</span>
+<span class="sd">                paths in relation to root folder.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">SUN</span><span class="p">,</span> <span class="s1">&#39;.sun&#39;</span><span class="p">,</span> <span class="n">rel_path</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">grid_folder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sensor grids folder.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GRID</span>
+
+<div class="viewcode-block" id="AssetFolder.grid_files"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.AssetFolder.grid_files">[docs]</a>    <span class="k">def</span> <span class="nf">grid_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rel_path</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List of sensor grid files.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            rel_path: A boolean to indicate if folders should be returned as relative</span>
+<span class="sd">                paths in relation to root folder.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">GRID</span><span class="p">,</span> <span class="s1">&#39;.pts&#39;</span><span class="p">,</span> <span class="n">rel_path</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">view_folder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;View files folder.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">VIEW</span>
+
+<div class="viewcode-block" id="AssetFolder.view_files"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.AssetFolder.view_files">[docs]</a>    <span class="k">def</span> <span class="nf">view_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rel_path</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List of view files.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            rel_path: A boolean to indicate if folders should be returned as relative</span>
+<span class="sd">                paths in relation to root folder.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VIEW</span><span class="p">,</span> <span class="s1">&#39;.vf&#39;</span><span class="p">,</span> <span class="n">rel_path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AssetFolder.write"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.AssetFolder.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write model folder.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            overwrite (bool): Set to True to overwrite the folder is it already exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">subfolder</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ASSET</span><span class="p">:</span>
+            <span class="n">directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="n">subfolder</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">overwrite</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> already exist.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">directory</span><span class="p">))</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span></div></div>
+
+
+<span class="c1"># TODO: Add look up for files from output folder.</span>
+<span class="c1"># unlike other folders output should probably be more flexible on file extension and</span>
+<span class="c1"># accept a list of extentions. We may need to change this globally.</span>
+<div class="viewcode-block" id="OutputFolder"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.OutputFolder">[docs]</a><span class="k">class</span> <span class="nc">OutputFolder</span><span class="p">(</span><span class="n">_FolderCollection</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Radiance output folder.</span>
+
+<span class="sd">    .. code-block:: shell</span>
+
+<span class="sd">        ├───output                    [required]</span>
+<span class="sd">            ├───matrix</span>
+<span class="sd">            ├───octree</span>
+<span class="sd">            ├───postprocess</span>
+<span class="sd">            └───temp</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">OUTPUT_ROOT</span> <span class="o">=</span> <span class="s1">&#39;output&#39;</span>
+    <span class="n">OCTREE</span> <span class="o">=</span> <span class="s1">&#39;output/octree&#39;</span>
+    <span class="n">MATRIX</span> <span class="o">=</span> <span class="s1">&#39;output/matrix&#39;</span>
+    <span class="n">TEMP</span> <span class="o">=</span> <span class="s1">&#39;output/temp&#39;</span>
+    <span class="n">POSTPROCESS</span> <span class="o">=</span> <span class="s1">&#39;output/postprocess&#39;</span>
+    <span class="n">OUTPUT</span> <span class="o">=</span> <span class="n">OUTPUT_ROOT</span><span class="p">,</span> <span class="n">OCTREE</span><span class="p">,</span> <span class="n">MATRIX</span><span class="p">,</span> <span class="n">TEMP</span><span class="p">,</span> <span class="n">POSTPROCESS</span>
+    <span class="n">REQUIRED</span> <span class="o">=</span> <span class="p">(</span><span class="n">OUTPUT_ROOT</span><span class="p">,)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">root</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Output root folder.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">OUTPUT_ROOT</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">octree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Folder for octree files.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">OCTREE</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Matrix outputs folder.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">MATRIX</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">temp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Temporary files folder.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">TEMP</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">postprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Postprocess folder.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">postprocess</span>
+
+<div class="viewcode-block" id="OutputFolder.write"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.OutputFolder.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write model folder.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            overwrite (bool): Set to True to overwrite the folder is it already exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">subfolder</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">OUTPUT</span><span class="p">:</span>
+            <span class="n">directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="n">subfolder</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">overwrite</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> already exist.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">directory</span><span class="p">))</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="SystemFolder"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.SystemFolder">[docs]</a><span class="k">class</span> <span class="nc">SystemFolder</span><span class="p">(</span><span class="n">_FolderCollection</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;System folder includes settings for runs like options, tasks.json.&quot;&quot;&quot;</span>
+    <span class="n">SYSTEM_ROOT</span> <span class="o">=</span> <span class="s1">&#39;system&#39;</span>
+    <span class="n">SYSTEM</span> <span class="o">=</span> <span class="p">(</span><span class="n">SYSTEM_ROOT</span><span class="p">,)</span>
+    <span class="n">REQUIRED</span> <span class="o">=</span> <span class="p">(</span><span class="n">SYSTEM_ROOT</span><span class="p">,)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">root</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;System root folder.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">SYSTEM_ROOT</span>
+
+<div class="viewcode-block" id="SystemFolder.write"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.SystemFolder.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write model folder.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            overwrite (bool): Set to True to overwrite the folder is it already exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">subfolder</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">SYSTEM</span><span class="p">:</span>
+            <span class="n">directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="p">,</span> <span class="n">subfolder</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">overwrite</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> already exist.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">directory</span><span class="p">))</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Folder"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.Folder">[docs]</a><span class="k">class</span> <span class="nc">Folder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Radiance folder structure.&quot;&quot;&quot;</span>
+
+    <span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;2.0.1&#39;</span>  <span class="c1"># radiance folder version</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Radiance folder structure.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            folder: Target folder as a string.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_folder</span> <span class="o">=</span> <span class="n">folder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">ModelFolder</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_asset</span> <span class="o">=</span> <span class="n">AssetFolder</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output</span> <span class="o">=</span> <span class="n">OutputFolder</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_system</span> <span class="o">=</span> <span class="n">SystemFolder</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Version for supported folder structure.</span>
+
+<span class="sd">        This library might be behind the latest release of radiance folder structure at:</span>
+<span class="sd">        https://github.com/ladybug-tools/radiance-folder-structure/tags</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__version__</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Model folder structure.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">asset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Asset folder structure.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_asset</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Output folder structure.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">system</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;System folder structure.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_system</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">subfolders</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List of existing subfolders.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">MODEL</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">asset</span><span class="o">.</span><span class="n">ASSET</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">OUTPUT</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">SYSTEM</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="Folder.write"><a class="viewcode-back" href="../../honeybee_radiance_folder.folder.html#honeybee_radiance_folder.folder.Folder.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write folder.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            overwrite (bool): Set to True to overwrite the folder is it already exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">overwrite</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">asset</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">overwrite</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">overwrite</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">overwrite</span><span class="p">)</span></div></div>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2019, Ladybug Tools.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>honeybee_radiance_folder.folderutil module &#8212; honeybee radiance folder 1.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="honeybee_radiance_folder.folder module" href="honeybee_radiance_folder.folder.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          honeybee radiance folder</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="honeybee_radiance_folder.html">honeybee_radiance_folder package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="honeybee_radiance_folder.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="honeybee_radiance_folder.folder.html">honeybee_radiance_folder.folder module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">honeybee_radiance_folder.folderutil module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="honeybee_radiance_folder.html#module-honeybee_radiance_folder">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="honeybee_radiance_folder.html">honeybee_radiance_folder package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="honeybee_radiance_folder.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="honeybee_radiance_folder.folder.html">honeybee_radiance_folder.folder module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">honeybee_radiance_folder.folderutil module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="honeybee_radiance_folder.html#module-honeybee_radiance_folder">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="honeybee_radiance_folder.folder.html" title="Previous Chapter: honeybee_radiance_folder.folder module"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; honeybee_radi...</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/honeybee_radiance_folder.folderutil.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="honeybee_radiance_folder.html">honeybee_radiance_folder package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="honeybee_radiance_folder.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="honeybee_radiance_folder.folder.html">honeybee_radiance_folder.folder module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">honeybee_radiance_folder.folderutil module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="honeybee_radiance_folder.html#module-honeybee_radiance_folder">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="module-honeybee_radiance_folder.folderutil">
+<span id="honeybee-radiance-folder-folderutil-module"></span><h1>honeybee_radiance_folder.folderutil module<a class="headerlink" href="#module-honeybee_radiance_folder.folderutil" title="Permalink to this headline">¶</a></h1>
+<p>Utilities for Radiance folder structure.</p>
+<dl class="class">
+<dt id="honeybee_radiance_folder.folderutil.ApertureState">
+<em class="property">class </em><code class="descclassname">honeybee_radiance_folder.folderutil.</code><code class="descname">ApertureState</code><span class="sig-paren">(</span><em>name</em>, <em>default</em>, <em>direct</em>, <em>black=None</em>, <em>tmtx=None</em>, <em>vmtx=None</em>, <em>dmtx=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folderutil.html#ApertureState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folderutil.ApertureState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#honeybee_radiance_folder.folderutil.NonApertureState" title="honeybee_radiance_folder.folderutil.NonApertureState"><code class="xref py py-class docutils literal notranslate"><span class="pre">honeybee_radiance_folder.folderutil.NonApertureState</span></code></a></p>
+<p>A state for a dynamic aperture from Radiance files.</p>
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folderutil.ApertureState.name">
+<code class="descname">name</code><a class="headerlink" href="#honeybee_radiance_folder.folderutil.ApertureState.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folderutil.ApertureState.default">
+<code class="descname">default</code><a class="headerlink" href="#honeybee_radiance_folder.folderutil.ApertureState.default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folderutil.ApertureState.direct">
+<code class="descname">direct</code><a class="headerlink" href="#honeybee_radiance_folder.folderutil.ApertureState.direct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folderutil.ApertureState.black">
+<code class="descname">black</code><a class="headerlink" href="#honeybee_radiance_folder.folderutil.ApertureState.black" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folderutil.ApertureState.tmtx">
+<code class="descname">tmtx</code><a class="headerlink" href="#honeybee_radiance_folder.folderutil.ApertureState.tmtx" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folderutil.ApertureState.vmtx">
+<code class="descname">vmtx</code><a class="headerlink" href="#honeybee_radiance_folder.folderutil.ApertureState.vmtx" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folderutil.ApertureState.dmtx">
+<code class="descname">dmtx</code><a class="headerlink" href="#honeybee_radiance_folder.folderutil.ApertureState.dmtx" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – Name for state.</li>
+<li><strong>default</strong> (<em>str</em>) – Path to file to be used for normal representation of the geometry.</li>
+<li><strong>direct</strong> (<em>str</em>) – Path to file to be used for direct studies.</li>
+<li><strong>black</strong> (<em>str</em>) – Path to file for blacking out the window.</li>
+<li><strong>tmtx</strong> (<em>str</em>) – Path to file for transmittance matrix.</li>
+<li><strong>vmtx</strong> (<em>str</em>) – Path to file for transmittance matrix.</li>
+<li><strong>dmtx</strong> (<em>str</em>) – Path to file for transmittance matrix.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="honeybee_radiance_folder.folderutil.ApertureState.from_dict">
+<em class="property">classmethod </em><code class="descname">from_dict</code><span class="sig-paren">(</span><em>input_dict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folderutil.html#ApertureState.from_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folderutil.ApertureState.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a state from an input dictionary.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;clear&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;./south_window..default..000.rad&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;direct&quot;</span><span class="p">:</span> <span class="s2">&quot;./south_window..direct..000.rad&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;black&quot;</span><span class="p">:</span> <span class="s2">&quot;./south_window..black.rad&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tmtx&quot;</span><span class="p">:</span> <span class="s2">&quot;clear.xml&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;vmtx&quot;</span><span class="p">:</span> <span class="s2">&quot;./south_window..mtx.rad&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dmtx&quot;</span><span class="p">:</span> <span class="s2">&quot;./south_window..mtx.rad&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="honeybee_radiance_folder.folderutil.ApertureState.validate">
+<code class="descname">validate</code><span class="sig-paren">(</span><em>folder</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folderutil.html#ApertureState.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folderutil.ApertureState.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate files in this state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="honeybee_radiance_folder.folderutil.DynamicAperture">
+<em class="property">class </em><code class="descclassname">honeybee_radiance_folder.folderutil.</code><code class="descname">DynamicAperture</code><span class="sig-paren">(</span><em>name</em>, <em>states</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folderutil.html#DynamicAperture"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folderutil.DynamicAperture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#honeybee_radiance_folder.folderutil.DynamicNonAperture" title="honeybee_radiance_folder.folderutil.DynamicNonAperture"><code class="xref py py-class docutils literal notranslate"><span class="pre">honeybee_radiance_folder.folderutil.DynamicNonAperture</span></code></a></p>
+<p>Representation of a Dynamic aperture in Radiance folder.</p>
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folderutil.DynamicAperture.name">
+<code class="descname">name</code><a class="headerlink" href="#honeybee_radiance_folder.folderutil.DynamicAperture.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folderutil.DynamicAperture.states">
+<code class="descname">states</code><a class="headerlink" href="#honeybee_radiance_folder.folderutil.DynamicAperture.states" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> – Dynamic aperture name.</li>
+<li><strong>states</strong> – A list of aperture states.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="honeybee_radiance_folder.folderutil.DynamicAperture.from_dict">
+<em class="property">classmethod </em><code class="descname">from_dict</code><span class="sig-paren">(</span><em>input_dict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folderutil.html#DynamicAperture.from_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folderutil.DynamicAperture.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dynamic aperture from a dictionary.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;south_window&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;clear&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;./south_window..default..000.rad&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;direct&quot;</span><span class="p">:</span> <span class="s2">&quot;./south_window..direct..000.rad&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;black&quot;</span><span class="p">:</span> <span class="s2">&quot;./south_window..black.rad&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tmtx&quot;</span><span class="p">:</span> <span class="s2">&quot;clear.xml&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;vmtx&quot;</span><span class="p">:</span> <span class="s2">&quot;./south_window..mtx.rad&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dmtx&quot;</span><span class="p">:</span> <span class="s2">&quot;./south_window..mtx.rad&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;diffuse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;./south_window..default..001.rad&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;direct&quot;</span><span class="p">:</span> <span class="s2">&quot;./south_window..direct..001.rad&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;black&quot;</span><span class="p">:</span> <span class="s2">&quot;./south_window..black.rad&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tmtx&quot;</span><span class="p">:</span> <span class="s2">&quot;diffuse50.xml&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;vmtx&quot;</span><span class="p">:</span> <span class="s2">&quot;./south_window..mtx.rad&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dmtx&quot;</span><span class="p">:</span> <span class="s2">&quot;./south_window..mtx.rad&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="honeybee_radiance_folder.folderutil.DynamicNonAperture">
+<em class="property">class </em><code class="descclassname">honeybee_radiance_folder.folderutil.</code><code class="descname">DynamicNonAperture</code><span class="sig-paren">(</span><em>name</em>, <em>states</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folderutil.html#DynamicNonAperture"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folderutil.DynamicNonAperture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Representation of a Dynamic nonaperture geometry in Radiance folder.</p>
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folderutil.DynamicNonAperture.name">
+<code class="descname">name</code><a class="headerlink" href="#honeybee_radiance_folder.folderutil.DynamicNonAperture.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folderutil.DynamicNonAperture.states">
+<code class="descname">states</code><a class="headerlink" href="#honeybee_radiance_folder.folderutil.DynamicNonAperture.states" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – Dynamic nonaperture geometry name.</li>
+<li><strong>states</strong> (<em>list</em><em>[</em><a class="reference internal" href="#honeybee_radiance_folder.folderutil.NonApertureState" title="honeybee_radiance_folder.folderutil.NonApertureState"><em>NonApertureState</em></a><em>]</em>) – A list of nonaperture states.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="honeybee_radiance_folder.folderutil.DynamicNonAperture.from_dict">
+<em class="property">classmethod </em><code class="descname">from_dict</code><span class="sig-paren">(</span><em>input_dict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folderutil.html#DynamicNonAperture.from_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folderutil.DynamicNonAperture.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dynamic aperture from a dictionary.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;ground&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;grass_covered&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;ground..summer..000.rad&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;direct&quot;</span><span class="p">:</span> <span class="s2">&quot;ground..direct..000.rad&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;snow_covered&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;ground..winter..001.rad&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;direct&quot;</span><span class="p">:</span> <span class="s2">&quot;ground..direct..000.rad&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="honeybee_radiance_folder.folderutil.DynamicNonAperture.validate">
+<code class="descname">validate</code><span class="sig-paren">(</span><em>folder</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folderutil.html#DynamicNonAperture.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folderutil.DynamicNonAperture.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate this dynamic geometry.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="honeybee_radiance_folder.folderutil.NonApertureState">
+<em class="property">class </em><code class="descclassname">honeybee_radiance_folder.folderutil.</code><code class="descname">NonApertureState</code><span class="sig-paren">(</span><em>name</em>, <em>default</em>, <em>direct</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folderutil.html#NonApertureState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folderutil.NonApertureState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A state for a dynamic non-aperture geometry from Radiance files.</p>
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folderutil.NonApertureState.name">
+<code class="descname">name</code><a class="headerlink" href="#honeybee_radiance_folder.folderutil.NonApertureState.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folderutil.NonApertureState.default">
+<code class="descname">default</code><a class="headerlink" href="#honeybee_radiance_folder.folderutil.NonApertureState.default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="honeybee_radiance_folder.folderutil.NonApertureState.direct">
+<code class="descname">direct</code><a class="headerlink" href="#honeybee_radiance_folder.folderutil.NonApertureState.direct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – Name for state.</li>
+<li><strong>default</strong> (<em>str</em>) – Path to file to be used for normal representation of the geometry.</li>
+<li><strong>direct</strong> (<em>str</em>) – Path to file to be used for direct studies.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="honeybee_radiance_folder.folderutil.NonApertureState.from_dict">
+<em class="property">classmethod </em><code class="descname">from_dict</code><span class="sig-paren">(</span><em>input_dict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folderutil.html#NonApertureState.from_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folderutil.NonApertureState.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a state from an input dictionary.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;grass_covered&quot;</span><span class="p">,</span>
+<span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;ground..summer..000.rad&quot;</span><span class="p">,</span>
+<span class="s2">&quot;direct&quot;</span><span class="p">:</span> <span class="s2">&quot;ground..direct..000.rad&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="honeybee_radiance_folder.folderutil.NonApertureState.validate">
+<code class="descname">validate</code><span class="sig-paren">(</span><em>folder</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folderutil.html#NonApertureState.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folderutil.NonApertureState.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate files in this state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="honeybee_radiance_folder.folderutil.parse_dynamic_apertures">
+<code class="descclassname">honeybee_radiance_folder.folderutil.</code><code class="descname">parse_dynamic_apertures</code><span class="sig-paren">(</span><em>states_file</em>, <em>validate=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folderutil.html#parse_dynamic_apertures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folderutil.parse_dynamic_apertures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse dynamic apertures from a state file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>states_file</strong> – Path to states JSON file.</li>
+<li><strong>validate</strong> – Validate the files in states files exist in the folder.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of dynamic apertures</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="honeybee_radiance_folder.folderutil.parse_dynamic_nonapertures">
+<code class="descclassname">honeybee_radiance_folder.folderutil.</code><code class="descname">parse_dynamic_nonapertures</code><span class="sig-paren">(</span><em>states_file</em>, <em>validate=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/honeybee_radiance_folder/folderutil.html#parse_dynamic_nonapertures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#honeybee_radiance_folder.folderutil.parse_dynamic_nonapertures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse dynamic nonaperture geometries from a state file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>states_file</strong> – Path to states JSON file.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of dynamic nonaperture geometries</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2019, Ladybug Tools.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
