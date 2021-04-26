@@ -194,22 +194,22 @@ class DynamicScene(object):
         Args:
             input_dict: An input dictionary.
 
-            .. code-block:: python
+        .. code-block:: python
 
-                {
-                    "ground": [
-                        {
-                        "identifier": "grass_covered",
-                        "default": "ground..summer..000.rad",
-                        "direct": "ground..direct..000.rad",
-                        },
-                        {
-                        "identifier": "snow_covered",
-                        "default": "ground..winter..001.rad",
-                        "direct": "ground..direct..000.rad"
-                        }
-                    ]
-                }
+            {
+                "ground": [
+                    {
+                    "identifier": "grass_covered",
+                    "default": "ground..summer..000.rad",
+                    "direct": "ground..direct..000.rad"
+                    },
+                    {
+                    "identifier": "snow_covered",
+                    "default": "ground..winter..001.rad",
+                    "direct": "ground..direct..000.rad"
+                    }
+                ]
+            }
 
         """
         keys = list(input_dict.keys())
